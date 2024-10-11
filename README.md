@@ -2,7 +2,7 @@
 
 This repository contains a sample that demonstrates the integration of a chat widget with Firebase to store and retrieve message data.
 
-Please refer the Blog through this [link](https://www.syncfusion.com/blogs/post/introducing-new-flutter-chat-widget).
+Please refer the KB through this [link].
 
 ## Syncfusion widgets:
 
