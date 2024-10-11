@@ -1,0 +1,16 @@
+{
+  "messages": {
+    "msg1": {
+      "text": "Hey! How's it going?",
+      "time": "2024-10-08T12:00:00Z",
+      "authorId": "00-00230-23423",
+      "authorName": "Sam"
+    },
+    "msg2": {
+      "text": "I'm good, thanks! Just enjoying the weekend.",
+      "time": "2024-10-08T12:02:00Z",
+      "authorId": "00-00230-23424",
+      "authorName": "John"
+    }
+  }
+}
