@@ -1,4 +1,4 @@
-# flutter_chat_firebase
+# How to store and retrieve the Flutter Chat conversation data from Flutter Firebase?
 
 This repository contains a sample that demonstrates the integration of a chat widget with Firebase to store and retrieve message data.
 
