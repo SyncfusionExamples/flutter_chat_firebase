@@ -22,7 +22,7 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   final List<ChatMessage> _messages = [];
 
-  final DatabaseReference _messagesRef =
+  final DatabaseReference _messageStream =
       FirebaseDatabase.instance.ref('messages');
 
   @override
@@ -34,7 +34,7 @@ class _MainAppState extends State<MainApp> {
           title: const Text('Syncfusion Flutter Chat with Firebase'),
         ),
         body: StreamBuilder<DatabaseEvent>(
-          stream: _messagesRef.orderByChild('time').onValue,
+          stream: _messageStream.onValue,
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Center(child: Text('Error: ${snapshot.error}'));
@@ -46,8 +46,7 @@ class _MainAppState extends State<MainApp> {
               data.forEach((key, value) {
                 final message = ChatMessage(
                   text: value['text'],
-                  time: DateTime.parse(
-                      value['time']),
+                  time: DateTime.parse(value['time']),
                   author: ChatAuthor(
                     id: value['authorId'],
                     name: value['authorName'],
@@ -62,7 +61,7 @@ class _MainAppState extends State<MainApp> {
               padding: const EdgeInsets.all(8.0),
               child: SfChat(
                 messages: _messages,
-                outgoingUser: 'Sam',
+                outgoingUser: '00-00230-23423',
                 composer: const ChatComposer(
                   decoration: InputDecoration(
                     hintText: 'Type a message',
@@ -79,7 +78,7 @@ class _MainAppState extends State<MainApp> {
                       text: newMessage,
                       time: DateTime.now(),
                       author: const ChatAuthor(
-                        id: 'Sam',
+                        id: '00-00230-23423',
                         name: 'Sam',
                       ),
                     );
@@ -99,7 +98,7 @@ class _MainAppState extends State<MainApp> {
   }
 
   Future<void> _sendMessageToFirebase(ChatMessage message) async {
-    await _messagesRef.push().set({
+    await _messageStream.push().set({
       'text': message.text,
       'time': message.time.toIso8601String(),
       'authorId': message.author.id,
